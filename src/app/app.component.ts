@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>{{title}}</h1>
-    <my-heroes></my-heroes>`,
+  templateUrl: 'app.component.html',
   styleUrls: ['./style.css'],
 })
 
