@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../services/hero.service';
 import { Router } from '@angular/router';
 import { Hero } from '../utils/hero';
+import { actionCable } from 'angular-actioncable';
 
 @Component({
   selector: 'my-heroes',

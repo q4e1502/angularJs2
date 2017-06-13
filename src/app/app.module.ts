@@ -1,5 +1,5 @@
 import { BrowserModule }         from '@angular/platform-browser';
-import { NgModule }              from '@angular/core';
+import { NgModule, OnInit }              from '@angular/core';
 import { FormsModule }           from '@angular/forms';
 import { HttpModule }            from '@angular/http';
 import { RouterModule }          from '@angular/router';
@@ -10,9 +10,6 @@ import { DashboardComponent }    from './components/dashboard';
 import { HeroDetailComponent }   from './components/hero-detail';
 import { HeroService }           from './services/hero.service';
 import { RoutesModule }          from './routes';
-
-
-
 
 @NgModule({
   declarations: [
@@ -30,4 +27,13 @@ import { RoutesModule }          from './routes';
   providers: [HeroService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit {
+  constructor(
+
+  ){}
+
+  ngOnInit(): void {
+    // console.log(angular)
+    // this.getHeroes();
+  }
+}
