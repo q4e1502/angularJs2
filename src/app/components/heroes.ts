@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../services/hero.service';
 import { Router } from '@angular/router';
+import * as ActionCable from 'actioncable';
+import { HeroService } from '../services/hero.service';
 import { Hero } from '../utils/hero';
-import { actionCable } from 'angular-actioncable';
+import { CABLE_URL } from '../utils/mock-hero';
 
 @Component({
   selector: 'my-heroes',
@@ -12,16 +13,35 @@ import { actionCable } from 'angular-actioncable';
 })
 
 export class HeroesComponent implements OnInit{
+  cable: any;
+  subscription: any;
   heroes: Hero[];
   selectedHero: Hero;
 
   constructor(
     private heroService: HeroService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getHeroes();
+    this.subscribe(CABLE_URL, "RoomsChannel");
+  }
+
+  setCable(url): void {
+    this.cable = ActionCable.createConsumer(url);
+  }
+
+  subscribe(url, channel) {
+    this.setCable(url);
+    this.subscription = this.cable.subscriptions.create(channel, {
+      connected: () => {
+        console.log('Connected WS')
+      },
+      received: (data) => {
+        console.log(data)
+      }
+    });
   }
 
   onSelect(hero: Hero): void {
@@ -29,7 +49,7 @@ export class HeroesComponent implements OnInit{
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then( heroes => this.heroes = heroes );
+    this.heroService.getRooms().then( heroes => this.heroes = heroes );
   }
 
   getRooms(): void {

@@ -3,6 +3,7 @@ import { NgModule, OnInit }              from '@angular/core';
 import { FormsModule }           from '@angular/forms';
 import { HttpModule }            from '@angular/http';
 import { RouterModule }          from '@angular/router';
+import { Ng2Cable, Broadcaster } from 'ng2-cable/js/index';
 
 import { AppComponent }          from './app.component';
 import { HeroesComponent }       from './components/heroes';
@@ -24,7 +25,7 @@ import { RoutesModule }          from './routes';
     HttpModule,
     RoutesModule,
   ],
-  providers: [HeroService],
+  providers: [HeroService, Ng2Cable, Broadcaster],
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {
