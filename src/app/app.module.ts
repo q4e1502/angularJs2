@@ -3,13 +3,13 @@ import { NgModule, OnInit }              from '@angular/core';
 import { FormsModule }           from '@angular/forms';
 import { HttpModule }            from '@angular/http';
 import { RouterModule }          from '@angular/router';
-import { Ng2Cable, Broadcaster } from 'ng2-cable/js/index';
 
 import { AppComponent }          from './app.component';
 import { HeroesComponent }       from './components/heroes';
 import { DashboardComponent }    from './components/dashboard';
 import { HeroDetailComponent }   from './components/hero-detail';
 import { HeroService }           from './services/hero.service';
+import { RoomApi }               from './services/api/room.api';
 import { RoutesModule }          from './routes';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { RoutesModule }          from './routes';
     HttpModule,
     RoutesModule,
   ],
-  providers: [HeroService, Ng2Cable, Broadcaster],
+  providers: [HeroService, RoomApi],
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {

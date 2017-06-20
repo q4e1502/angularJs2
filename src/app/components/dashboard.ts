@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../utils/hero';
-import { HeroService } from '../services/hero.service';
+import { Room } from '../services/room';
+import { RoomApi } from '../services/api/room.api';
 
 @Component({
   selector: 'my-dashboard',
   templateUrl: '../views/dashboard.component.html',
-  styleUrls: ['../style.css']
+  styleUrls: ['../style.css'],
 })
 
 export class DashboardComponent implements OnInit{
-  heroes: Hero[] = [];
-
-  constructor(private heroService: HeroService) { }
+  rooms: Room[] = [];
+  constructor(
+    private RoomApi: RoomApi ) { }
 
   ngOnInit(): void {
-    this.heroService.getRooms().then(heroes => this.heroes = heroes.slice(1, 5));
+    this.RoomApi.getRooms().then(rooms => this.rooms = rooms.slice(1, 5));
   }
 }

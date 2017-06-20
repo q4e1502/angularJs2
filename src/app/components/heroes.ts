@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as ActionCable from 'actioncable';
 import { HeroService } from '../services/hero.service';
-import { Hero } from '../utils/hero';
-import { CABLE_URL } from '../utils/mock-hero';
+import { Hero } from '../services/utils/hero';
+import { CABLE_URL } from '../services/utils/mock-hero';
 
 @Component({
   selector: 'my-heroes',

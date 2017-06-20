@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http }       from '@angular/http';
-import { Hero } from '../utils/hero';
-import { HEROES, API_URL } from '../utils/mock-hero';
+import { Hero } from '../services/utils/hero';
+import { rooms, API_URL } from '../services/utils/mock-hero';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -10,13 +10,13 @@ export class HeroService {
 
   constructor(private http: Http) { }
 
-  getHeroes(): Promise<Hero[]> {
-    return Promise.resolve(HEROES);
+  getrooms(): Promise<Hero[]> {
+    return Promise.resolve(rooms);
   }
 
   getHero(id: number): Promise<Hero> {
-    return this.getHeroes()
-               .then(heroes => heroes.find(hero => hero.id === id));
+    return this.getrooms()
+               .then(rooms => rooms.find(hero => hero.id === id));
   }
 
 
